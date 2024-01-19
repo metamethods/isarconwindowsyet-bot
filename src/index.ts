@@ -10,7 +10,7 @@ if (!webhookUrl)
   throw new Error('DISCORD_WEBHOOK_URL is not set');
 
 async function sendUpdate() {
-  const response = await fetch('https://api.retool.com/v1/workflows/629ac40b-46c2-4cb5-8d16-ee9d482781e0/startTrigger?workflowApiKey=retool_wk_ad878a1e91ad47c3bd1f754c426da0cf')
+  const response = await fetch('https://arc.net/api/get-windows-beta-user-count')
     .then(result => result.json());
   
   const { betaTesters } = response;
@@ -38,7 +38,7 @@ async function sendUpdate() {
 async function main() {
   // Send an update immediately, then every minute
   await sendUpdate();
-  setInterval(sendUpdate, 60_000);
+  setInterval(sendUpdate, 32 * 60 * 1000);
 }
 
 main();
